@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8D8994B92F639E4D0080392F /* AgDroneApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D7A82832F638EB300164CFF /* AgDroneApp.swift */; };
 		8DE038172F4D00C500274FB2 /* Supabase in Frameworks */ = {isa = PBXBuildFile; productRef = 8DE038162F4D00C500274FB2 /* Supabase */; };
 /* End PBXBuildFile section */
 
@@ -28,9 +29,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8D7A82832F638EB300164CFF /* AgDroneApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgDroneApp.swift; sourceTree = "<group>"; };
 		8DACE11D2F367BA600C6AB1B /* Ag Spray Drone Field and Chemical Tracking.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Ag Spray Drone Field and Chemical Tracking.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8DACE12C2F367BA800C6AB1B /* Ag Spray Drone Field and Chemical TrackingTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Ag Spray Drone Field and Chemical TrackingTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8DACE1362F367BA800C6AB1B /* Ag Spray Drone Field and Chemical TrackingUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Ag Spray Drone Field and Chemical TrackingUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8DD5B8522F63872A005CAF41 /* AgSprayDroneApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgSprayDroneApp.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -80,6 +83,8 @@
 		8DACE1142F367BA600C6AB1B = {
 			isa = PBXGroup;
 			children = (
+				8D7A82832F638EB300164CFF /* AgDroneApp.swift */,
+				8DD5B8522F63872A005CAF41 /* AgSprayDroneApp.swift */,
 				8DACE11F2F367BA600C6AB1B /* Ag Spray Drone Field and Chemical Tracking */,
 				8DACE12F2F367BA800C6AB1B /* Ag Spray Drone Field and Chemical TrackingTests */,
 				8DACE1392F367BA800C6AB1B /* Ag Spray Drone Field and Chemical TrackingUITests */,
@@ -119,9 +124,6 @@
 			buildRules = (
 			);
 			dependencies = (
-			);
-			fileSystemSynchronizedGroups = (
-				8DACE11F2F367BA600C6AB1B /* Ag Spray Drone Field and Chemical Tracking */,
 			);
 			name = "Ag Spray Drone Field and Chemical Tracking";
 			packageProductDependencies = (
@@ -253,6 +255,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8D8994B92F639E4D0080392F /* AgDroneApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
