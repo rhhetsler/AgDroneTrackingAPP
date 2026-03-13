@@ -224,45 +224,40 @@ struct JobEditorView: View {
     @EnvironmentObject var api: AgAPI
     @Environment(\.dismiss) private var dismiss
 
-    let existingJob: SprayJobRow?
+    let job = SprayJobRow(
+        id: existingJob?.id ?? UUID(),
+        team_id: teamID,
+        created_at: existingJob?.created_at ?? nowISO,
+        date: existingJob?.date ?? nowISO,
+        field_name: fieldName.nilIfEmpty,
+        crop: crop.nilIfEmpty,
+        notes: notes.nilIfEmpty,
+        total_acres_sprayed: Double(acres) ?? 0,
+        created_by: api.userID,
 
-    @StateObject private var locationWeather = LocationWeatherManager()
+        grower_name: growerName.nilIfEmpty,
+        farm_owner_name: farmOwnerName.nilIfEmpty,
+        address_line: addressLine.nilIfEmpty,
+        city: city.nilIfEmpty,
+        state: stateRegion.nilIfEmpty,
+        zip: zipCode.nilIfEmpty,
+        phone: phone.nilIfEmpty,
+        email: contactEmail.nilIfEmpty,
 
-    @State private var growerName = ""
-    @State private var farmOwnerName = ""
-    @State private var addressLine = ""
-    @State private var city = ""
-    @State private var stateRegion = ""
-    @State private var zipCode = ""
-    @State private var phone = ""
-    @State private var contactEmail = ""
+        latitude: nil,
+        longitude: nil,
 
-    @State private var jobName = ""
-    @State private var fieldName = ""
-    @State private var farmName = ""
-    @State private var crop = ""
-    @State private var acres = ""
+        weather_summary: weatherSummary.nilIfEmpty,
+        start_time: ISO8601DateFormatter().string(from: startDate),
+        end_time: ISO8601DateFormatter().string(from: endDate),
 
-    @State private var startDate = Date()
-    @State private var endDate = Date()
-
-    @State private var tempF = ""
-    @State private var humidityPercent = ""
-    @State private var windSpeedMPH = ""
-    @State private var windDirection = ""
-    @State private var barometricPressureInHg = ""
-    @State private var dewPointF = ""
-
-    @State private var locationName = ""
-    @State private var weatherSummary = ""
-    @State private var notes = ""
-
-    @State private var chemicalDrafts: [ChemicalDraft] = [ChemicalDraft()]
-    @State private var saving = false
-
-    init(existingJob: SprayJobRow? = nil) {
-        self.existingJob = existingJob
-    }
+        wind_speed_mph: Double(windSpeedMPH),
+        wind_direction: windDirection.nilIfEmpty,
+        humidity_percent: Double(humidityPercent),
+        dew_point_f: Double(dewPointF),
+        pressure_inhg: Double(barometricPressureInHg),
+        temperature_f: Double(tempF)
+    )
 
     var body: some View {
         ZStack {
@@ -762,27 +757,39 @@ final class AgAPI: ObservableObject {
 
 // MARK: - Models
 
-struct SprayJobRow: Identifiable, Hashable, Sendable {
+struct SprayJobRow: Identifiable, Codable, Hashable, Sendable {
     var id: UUID
     var team_id: UUID
-    var created_by: UUID?
-    var job_name: String?
+    var created_at: String
+    var date: String?
     var field_name: String?
-    var farm_name: String?
     var crop: String?
-    var total_acres_sprayed: Double
-    var spray_date: String
     var notes: String?
-    var is_closed: Bool
-    var temperature_f: Double?
-    var humidity_percent: Double?
+    var total_acres_sprayed: Double
+    var created_by: UUID?
+
+    var grower_name: String?
+    var farm_owner_name: String?
+    var address_line: String?
+    var city: String?
+    var state: String?
+    var zip: String?
+    var phone: String?
+    var email: String?
+
+    var latitude: Double?
+    var longitude: Double?
+
+    var weather_summary: String?
+    var start_time: String?
+    var end_time: String?
+
     var wind_speed_mph: Double?
     var wind_direction: String?
-    var barometric_pressure_inhg: Double?
+    var humidity_percent: Double?
     var dew_point_f: Double?
-    var location_name: String?
-    var weather_summary: String?
-    var created_at: String
+    var pressure_inhg: Double?
+    var temperature_f: Double?
 }
 
 struct ChemicalRow: Identifiable, Hashable, Sendable {
